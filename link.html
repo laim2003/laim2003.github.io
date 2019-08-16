@@ -12,6 +12,7 @@
       gc_msg = document.querySelector("#gc_msg");
       }
       function setLink(){
+        if(gc_from.value.length = 0) send_qc.enabled = false;
         send_gc.href= base_link_giftcard + "/" + gc_from.value + "/" + gc_msg.value;
       }
     </script>

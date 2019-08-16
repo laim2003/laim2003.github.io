@@ -1,10 +1,16 @@
 <html>
   <head>
     <script>
-      const base_link_giftcard = "raysono://giftcard";
-      const send_gc = document.querySelector("#create");
-      const gc_from = document.querySelector("#gc_from");
-      const gc_msg = document.querySelector("#gc_msg");
+      let base_link_giftcard
+      let send_gc;
+      let gc_from;
+      let gc_msg;
+      window.onload = function(e){
+      base_link_giftcard = "raysono://giftcard";
+      send_gc = document.querySelector("#create");
+      gc_from = document.querySelector("#gc_from");
+      gc_msg = document.querySelector("#gc_msg");
+      }
       function setLink(){
         send_gc.href= base_link_giftcard + "?sender=" + gc_from.value + "?msg=" + gc_msg.value;
       }

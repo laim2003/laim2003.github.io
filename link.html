@@ -1,1 +1,19 @@
-<a href="raysono://giftcard">giftcard</a>
+<html>
+  <head>
+    <script>
+      const base_link_giftcard = "raysono://giftcard";
+      const send_gc = document.querySelector("#create");
+      const gc_from = document.querySelector("#gc_from");
+      const gc_msg = document.querySelector("#gc_msg");
+      function setLink(){
+        send_gc.href= base_link_giftcard + "?sender=" + gc_from.value + "?msg=" + gc_msg.value;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Giftcard creator for rs-portfolio</2>
+    <input onchange="setLink" id="gc_from" placeholder="from" />
+    <input onchange="setLink" id="gc_msg" placeholder="custom message" />
+    <a href="raysono://giftcard" id="create">Create giftcard</a>
+  </body>
+</html>

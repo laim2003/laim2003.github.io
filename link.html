@@ -1,7 +1,7 @@
 <html>
   <head>
     <script>
-      let base_link_giftcard
+      let base_link_giftcard;
       let send_gc;
       let gc_from;
       let gc_msg;
@@ -18,8 +18,8 @@
   </head>
   <body>
     <h2>Giftcard creator for rs-portfolio</h2>
-    <input onchange="setLink" id="gc_from" placeholder="from" />
-    <input onchange="setLink" id="gc_msg" placeholder="custom message" />
+    <input oninput="setLink()" id="gc_from" placeholder="from" />
+    <input oninput="setLink()" id="gc_msg" placeholder="custom message" />
     <a href="raysono://giftcard" id="create">Create giftcard</a>
   </body>
 </html>

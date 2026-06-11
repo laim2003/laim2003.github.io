@@ -336,6 +336,32 @@
     .hero__illustration {
       flex-shrink: 0;
     }
+    .hero__photo {
+      width: clamp(220px, 28vw, 360px);
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: 3px solid var(--color-surface);
+      display: block;
+    }
+
+    /* Contact photo */
+    .contact__photo-wrap {
+      margin-bottom: var(--space-6);
+      display: flex;
+      justify-content: center;
+    }
+    .contact__photo {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2.5px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
 
     @media (max-width: 768px) {
       .hero__grid {
@@ -343,6 +369,9 @@
         text-align: left;
       }
       .hero__illustration { display: none; }
+      /* Show photo on mobile too, just smaller and below text */
+      .hero__grid--has-photo .hero__illustration { display: block; }
+      .hero__photo { width: 100%; max-width: 280px; aspect-ratio: 4/3; margin-top: var(--space-8); }
     }
 
     /* ─── Section Headings ───────────────────────────────────────────── */
@@ -775,7 +804,7 @@
   </div>
 
   <div class="container">
-    <div class="hero__grid">
+    <div class="hero__grid hero__grid--has-photo">
       <div class="hero__content">
         <h1 class="hero__title fade-in" data-delay="1">
           Hi, I'm<br><em>Lukas.</em>
@@ -793,54 +822,7 @@
         </div>
       </div>
 
-      <!-- Hero illustration: floating code window -->
-      <div class="hero__illustration fade-in" data-delay="2" aria-hidden="true">
-        <svg width="320" height="280" viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Card shadow -->
-          <rect x="12" y="16" width="296" height="252" rx="16" fill="var(--color-primary)" opacity="0.06"/>
-          <!-- Card body -->
-          <rect x="4" y="8" width="296" height="252" rx="16" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1.5"/>
-          <!-- Title bar -->
-          <rect x="4" y="8" width="296" height="40" rx="16" fill="var(--color-surface-offset)"/>
-          <rect x="4" y="32" width="296" height="16" fill="var(--color-surface-offset)"/>
-          <!-- Traffic lights -->
-          <circle cx="30" cy="28" r="5.5" fill="#ff5f57"/>
-          <circle cx="46" cy="28" r="5.5" fill="#ffbd2e"/>
-          <circle cx="62" cy="28" r="5.5" fill="#28c840"/>
-          <!-- File tab -->
-          <rect x="80" y="18" width="80" height="20" rx="4" fill="var(--color-surface)" stroke="var(--color-border)" stroke-width="1"/>
-          <text x="88" y="32" font-family="monospace" font-size="9" fill="var(--color-text-muted)">Main.java</text>
-          <!-- Code lines -->
-          <!-- Line 1 -->
-          <rect x="24" y="68" width="50" height="8" rx="3" fill="var(--color-primary)" opacity="0.7"/>
-          <rect x="80" y="68" width="70" height="8" rx="3" fill="var(--color-text)" opacity="0.15"/>
-          <!-- Line 2 -->
-          <rect x="24" y="86" width="30" height="8" rx="3" fill="var(--color-accent)" opacity="0.7"/>
-          <rect x="60" y="86" width="90" height="8" rx="3" fill="var(--color-text)" opacity="0.12"/>
-          <!-- Line 3 -->
-          <rect x="40" y="104" width="20" height="8" rx="3" fill="var(--color-primary)" opacity="0.5"/>
-          <rect x="66" y="104" width="110" height="8" rx="3" fill="var(--color-text)" opacity="0.15"/>
-          <rect x="182" y="104" width="20" height="8" rx="3" fill="var(--color-accent)" opacity="0.6"/>
-          <!-- Line 4 -->
-          <rect x="40" y="122" width="140" height="8" rx="3" fill="var(--color-text)" opacity="0.1"/>
-          <!-- Line 5 -->
-          <rect x="40" y="140" width="20" height="8" rx="3" fill="var(--color-primary)" opacity="0.5"/>
-          <rect x="66" y="140" width="85" height="8" rx="3" fill="var(--color-text)" opacity="0.12"/>
-          <!-- Line 6 -->
-          <rect x="24" y="158" width="15" height="8" rx="3" fill="var(--color-text)" opacity="0.2"/>
-          <!-- Divider -->
-          <line x1="24" y1="180" x2="276" y2="180" stroke="var(--color-divider)" stroke-width="1"/>
-          <!-- Status bar -->
-          <rect x="24" y="192" width="60" height="7" rx="3" fill="var(--color-primary)" opacity="0.25"/>
-          <rect x="92" y="192" width="40" height="7" rx="3" fill="var(--color-text)" opacity="0.1"/>
-          <rect x="220" y="192" width="56" height="7" rx="3" fill="var(--color-text)" opacity="0.08"/>
-          <!-- Terminal output area -->
-          <rect x="24" y="210" width="260" height="34" rx="6" fill="var(--color-bg)" stroke="var(--color-divider)" stroke-width="1"/>
-          <circle cx="38" cy="227" r="4" fill="var(--color-primary)" opacity="0.5"/>
-          <rect x="48" y="223" width="80" height="7" rx="3" fill="var(--color-text)" opacity="0.15"/>
-          <rect x="134" y="223" width="40" height="7" rx="3" fill="var(--color-accent)" opacity="0.5"/>
-        </svg>
-      </div>
+
     </div>
   </div>
 </section>
@@ -858,7 +840,7 @@
       <div class="about__text fade-in">
         <p>
           I'm Lukas, a Business student at LMU Munich with a strong interest in software engineering.
-          I combine my academic background with hands-on experience at <strong>Capgemini</strong>, where I've worked as a Werkstudent building Java-based tools and GUI applications.
+          I combine my academic background with hands-on experience at <strong>Capgemini</strong>, where I work as a working student building Java-based tools and GUI applications.
         </p>
         <p>
           My work spans CLI tooling, JavaFX desktop interfaces, and Android app development. I'm especially drawn to clean architecture, readable code, and developer tooling that makes other engineers' lives easier.
@@ -913,33 +895,33 @@
             <li class="timeline-item">
               <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
               <div class="timeline-body">
-                <div class="timeline-year">2024 – present</div>
-                <div class="timeline-title">Werkstudent — Software Development</div>
+                <div class="timeline-year">Oct 2027 (planned)</div>
+                <div class="timeline-title">M.Sc. Management &amp; Technology</div>
+                <div class="timeline-sub">TU Munich</div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+              <div class="timeline-body">
+                <div class="timeline-year">Mar 2026 – Sep 2026</div>
+                <div class="timeline-title">Working Student — Software Development &amp; IT Consulting</div>
                 <div class="timeline-sub">Capgemini, Munich</div>
               </div>
             </li>
             <li class="timeline-item">
               <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
               <div class="timeline-body">
-                <div class="timeline-year">2022 – present</div>
-                <div class="timeline-title">B.Sc. Computer Science (Nebenfach)</div>
-                <div class="timeline-sub">LMU Munich</div>
-              </div>
-            </li>
-            <li class="timeline-item">
-              <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
-              <div class="timeline-body">
-                <div class="timeline-year">2024</div>
-                <div class="timeline-title">Internal Tooling — Low-Code Automation</div>
-                <div class="timeline-sub">Business Development Internship</div>
+                <div class="timeline-year">Aug 2024 – Oct 2024</div>
+                <div class="timeline-title">Intern — Business Development</div>
+                <div class="timeline-sub">vonFürstenberg HR, Munich</div>
               </div>
             </li>
             <li class="timeline-item">
               <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
               <div class="timeline-body">
-                <div class="timeline-year">2027 (planned)</div>
-                <div class="timeline-title">M.Sc. Management &amp; Technology</div>
-                <div class="timeline-sub">TU Munich</div>
+                <div class="timeline-year">Oct 2022 – Aug 2026</div>
+                <div class="timeline-title">B.Sc. Business Administration</div>
+                <div class="timeline-sub">LMU Munich</div>
               </div>
             </li>
           </ul>
@@ -1141,6 +1123,9 @@
 
     <div class="contact__inner contact__inner--solo">
       <div class="contact__info fade-in">
+        <div class="contact__photo-wrap">
+          <img src="photo.jpg" alt="Lukas Faber" class="contact__photo" />
+        </div>
         <div class="contact__links">
 
           <a href="https://github.com/laim2003" target="_blank" rel="noopener" class="contact-link-item">
